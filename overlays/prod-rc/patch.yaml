@@ -4,6 +4,6 @@ metadata:
   name: ing-whoami
   annotations:
     nginx.ingress.kubernetes.io/canary: "true"
-    #nginx.ingress.kubernetes.io/canary-by-header: "X-Canary"
-    #nginx.ingress.kubernetes.io/canary-by-header-value: "v2"
-    nginx.ingress.kubernetes.io/canary-weight: 50
+    nginx.ingress.kubernetes.io/canary-by-header: "X-Canary"
+    nginx.ingress.kubernetes.io/canary-by-header-value: "v2"
+    #nginx.ingress.kubernetes.io/canary-weight: 50
