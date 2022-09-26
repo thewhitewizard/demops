@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-whoami
+spec:
+  ports:
+    - name: whoami
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: whoami
+  type: ClusterIP

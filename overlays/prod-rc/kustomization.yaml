@@ -1,0 +1,21 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: whoami
+
+resources:
+  - ../../base/whoami
+
+images:
+- name: fredericcordier/whoami
+  newTag: "0.2"
+
+nameSuffix: -canary
+
+commonLabels:
+  app: whoami-canary
+  name: whoami-canary
+
+patchesStrategicMerge:
+- patch.yaml

@@ -1,0 +1,39 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: whoami
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whoami
+  template:
+    metadata:
+      labels:
+        app: whoami
+    spec:
+      containers:
+        - name: whoami
+          image: fredericcordier/whoami:0.1
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: 8080
+            initialDelaySeconds: 13
+            periodSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 4
+            periodSeconds: 2
+          resources:
+            requests:
+              memory: "20Mi"
+              cpu: "250m"
+            limits:
+              memory: "20Mi"
+              cpu: "250m"
